@@ -7,9 +7,11 @@
 """
 
 from .core import judge, make_secret
+from .revel import select_difficulty
 
 
 def play(digits=3):
+    digits = select_difficulty(digits)
     secret = make_secret(digits)
     print(f"Hit & Blow（{digits} 桁・重複なし）")
 
