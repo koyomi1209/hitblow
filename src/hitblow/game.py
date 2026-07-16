@@ -8,7 +8,7 @@
 
 from .core import judge, make_secret
 from .revel import select_difficulty
-
+from .sound import play_result_sound
 
 def play(digits=3):
     digits = select_difficulty(digits)
@@ -31,6 +31,7 @@ def play(digits=3):
             continue
         tries += 1
         hit, blow = judge(secret, guess)
+        play_result_sound(hit, blow)
         print(f"  Hit={hit}  Blow={blow}")
         if hit == digits:
 
