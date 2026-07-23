@@ -11,11 +11,20 @@ from .revel import select_difficulty
 from .sound import play_result_sound
 
 def play(digits=3):
+    # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
+    print("=== Hit & Blow ===")
+    print("プレイモードを選択してください")
+    mode = input("1: ターミナルで遊ぶ / 2: GUIで遊ぶ [Enterで1] > ").strip()
+
+    if mode == "2":
+        from .gui import start_gui
+        start_gui()
+        return  # GUIが閉じたらターミナルの処理に進まず終了
+
+    # --- 以下、従来のターミナル版の処理（そのまま） ---
     digits = select_difficulty(digits)
     secret = make_secret(digits)
     print(f"Hit & Blow（{digits} 桁・重複なし）")
-
-    # ===== ① 開始時に足す（難易度・あいさつ など）: ここに書く =====
 
     tries = 0
     while True:
@@ -36,7 +45,7 @@ def play(digits=3):
         if hit == digits:
 
             # ===== ③ 勝利時に足す（スコア・履歴 など）: ここに書く =====
-            from .score import show_score 
+            from .score import show_score
             show_score(tries, digits)
 
             print(f"正解！ {tries} 回で当たり（答え {secret}）")
