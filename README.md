@@ -1,4 +1,4 @@
-# 難易度選択可能&GUIとCUIを選べる&サウンド付き hitblow
+# 難易度選択可能&スコア確認可能&GUIとCUIを選べる&サウンド付き hitblow
 
 # hitblow（チームで育てる Hit & Blow）
 
